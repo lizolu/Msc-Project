@@ -1,0 +1,5 @@
+Approach,Silhouette,DaviesBouldin,CalinskiHarabasz,Dunn,WCSS
+KMeans,0.0376,3.2674,3.7501,0.6039,49.9997
+Keyword,-0.0052,3.6854,1.764,0.4946,56.0067
+Semantic,0.0113,3.9904,2.9388,0.4738,55.0804
+Hybrid,0.0,3.422,2.3424,0.4738,54.7284

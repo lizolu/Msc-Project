@@ -91,3 +91,8 @@ plt.show()
 # === Save counts table to CSV (optional) ===
 counts.to_csv("hybrid_category_sentiment_counts.csv")
 print("Saved counts table to 'hybrid_category_sentiment_counts.csv'")
+
+# === Save proportions table (percentages) to CSV ===
+props_pct = (props * 100).round(2)   # convert proportions to percentages
+props_pct.to_csv("hybrid_category_sentiment_percentages.csv")
+print("Saved proportions table to 'hybrid_category_sentiment_percentages.csv'")
