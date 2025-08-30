@@ -36,7 +36,19 @@ x = np.arange(len(counts.index))
 bottom = np.zeros(len(counts))
 
 for col in counts.columns:
-    ax1.bar(x, counts[col].values, bottom=bottom, label=col)
+    bars = ax1.bar(x, counts[col].values, bottom=bottom, label=col)
+
+    # Annotate values inside each stacked segment
+    for i, bar in enumerate(bars):
+        height = bar.get_height()
+        if height > 50:  # only annotate non-zero bars
+            ax1.text(
+                bar.get_x() + bar.get_width()/2,
+                bottom[i] + height/2,
+                str(int(height)),
+                ha="center", va="center", fontsize=9, color="black"
+            )
+
     bottom += counts[col].values
 
 ax1.set_xticks(x)
@@ -45,13 +57,9 @@ ax1.set_ylabel("Number of Reviews")
 ax1.set_title("Sentiment by Hybrid Category (Counts)")
 ax1.legend(title="Sentiment", loc="best")
 
-# Add total values above bars
-totals = counts.sum(axis=1).values
-for i, total in enumerate(totals):
-    ax1.text(i, total, str(int(total)), ha="center", va="bottom", fontsize=9)
-
 plt.tight_layout()
 plt.show()
+
 
 # === Visualization 2: 100% Stacked bar (Proportions) ===
 fig2, ax2 = plt.subplots(figsize=(11, 6))
